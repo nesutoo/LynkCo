@@ -1,0 +1,29 @@
+.login-f {
+    background-color: #f8f9fa;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}   
+.heading h2{
+    color:rgb(255, 255, 255);
+}
+
+.flex{
+    border-radius: 45px;
+}
+
+.heading p{
+    color:rgba(255, 255, 255, 0.538);
+}
+
+.heading2, h1,form,label{
+    color:white;
+
+}
+
+.border{
+    border-color: #374066;
+}
+
