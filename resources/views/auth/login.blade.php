@@ -31,6 +31,8 @@
 
 </head>
 <body style="background-image: linear-gradient(to right, #000931,rgb(214, 221, 255)">
+<body style="background-image: linear-gradient(to right, #0f0b87,rgb(214, 221, 255)">
+>>>>>>> 8d1aa97fa291fefdcfc2420eececce7657dc8c6a
     <main>
         <div class="min-h-screen flex items-center justify-center p-4">
             <div class="flex flex-col md:flex-row gap-5 justify-center items-center bg-white p-8 md:p-10 rounded-lg shadow-lg w-full max-w-4xl" style="background-color: #242b4a">
