@@ -5,8 +5,34 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
     margin-bottom: 20px;
+<<<<<<< HEAD
 }
 
 .head-text{
     color: bisque;
 }
+=======
+
+}   
+.heading h2{
+    color:rgb(255, 255, 255);
+}
+
+.flex{
+    border-radius: 45px;
+}
+
+.heading p{
+    color:rgba(255, 255, 255, 0.538);
+}
+
+.heading2, h1,form,label{
+    color:white;
+
+}
+
+.border{
+    border-color: #374066;
+}
+
+>>>>>>> eb17657932abcef82504a9b3809426412ffd68e4
