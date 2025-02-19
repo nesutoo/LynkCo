@@ -73,9 +73,5 @@ document.addEventListener('DOMContentLoaded', function() {
         } finally {
             setLoading(false);
         }
-<<<<<<< HEAD
-        
-=======
->>>>>>> 2dc4f10692dc9f5a4c1e8989a73ddaa2c58c2a16
     });
 });

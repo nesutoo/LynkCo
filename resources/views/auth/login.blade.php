@@ -7,7 +7,6 @@
     <title>Login - LynkCo</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     @vite(['resources/js/firebase.js', 'resources/js/login.js'])
-<<<<<<< HEAD
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <style>
         .relative {
@@ -17,16 +16,14 @@
             background: none;
             border: none;
             cursor: pointer;
+            color: white;
         }
     </style>
 
-=======
->>>>>>> 2dc4f10692dc9f5a4c1e8989a73ddaa2c58c2a16
 </head>
 <body class="bg-gray-100">
     <main>
         <div class="min-h-screen flex items-center justify-center p-4">
-<<<<<<< HEAD
             <div class="flex flex-col md:flex-row gap-5 justify-center items-center bg-white p-8 md:p-10 rounded-lg shadow-lg w-full max-w-4xl" style="background-color: #242b4a">
                 <div class="w-full md:w-1/2 flex items-center justify-center">
                     <div class="heading text-center">
@@ -41,22 +38,6 @@
                     <form id="loginForm" class="space-y-4">
                         <div>
                             <label for="email" class="block font-medium mb-1">Email</label>
-=======
-            <div class="flex flex-col md:flex-row gap-5 justify-center items-center bg-white p-8 md:p-10 rounded-lg shadow-lg w-full max-w-4xl">
-                <div class="w-full md:w-1/2 flex items-center justify-center">
-                    <div class="text-center">
-                        <img src="https://via.placeholder.com/150" alt="LynkCo Logo" class="mb-4 rounded-lg mx-auto">
-                        <h2 class="text-2xl font-bold text-gray-800">Welcome to LynkCo!</h2>
-                        <p class="text-gray-600 mt-2">Please login to access your account.</p>
-                    </div>
-                </div>
-
-                <div class="w-full md:w-1/2">
-                    <h1 class="text-2xl font-bold mb-6 text-gray-800">Login</h1>
-                    <form id="loginForm" class="space-y-4">
-                        <div>
-                            <label for="email" class="block text-gray-700 font-medium mb-1">Email</label>
->>>>>>> 2dc4f10692dc9f5a4c1e8989a73ddaa2c58c2a16
                             <input 
                                 type="email" 
                                 name="email" 
@@ -64,21 +45,13 @@
                                 required 
                                 class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
                                 placeholder="Enter your email"
-<<<<<<< HEAD
                                 style="background-color: #374066"
-=======
->>>>>>> 2dc4f10692dc9f5a4c1e8989a73ddaa2c58c2a16
                             >
                             <span id="emailError" class="text-red-500 text-sm hidden"></span>
                         </div>
 
-<<<<<<< HEAD
                         <div class="relative">
                             <label for="password" class="block font-medium mb-1">Password</label>
-=======
-                        <div>
-                            <label for="password" class="block text-gray-700 font-medium mb-1">Password</label>
->>>>>>> 2dc4f10692dc9f5a4c1e8989a73ddaa2c58c2a16
                             <input 
                                 type="password" 
                                 name="password" 
@@ -86,7 +59,6 @@
                                 required 
                                 class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
                                 placeholder="Enter your password"
-<<<<<<< HEAD
                                 style="background-color: #374066"
                             >
                             <button 
@@ -114,22 +86,12 @@
                             </button>
                             <span id="passwordError" class="text-red-500 text-sm hidden"></span>
                         </div>
-
+                        
                         <button
                             type="submit" 
                             class="w-full text-white font-bold py-3 px-4 rounded-md hover:bg-blue-600 transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
                             id="loginButton"
                             style="background-color:#455080;"    
-=======
-                            >
-                            <span id="passwordError" class="text-red-500 text-sm hidden"></span>
-                        </div>
-
-                        <button 
-                            type="submit" 
-                            class="w-full bg-blue-500 text-white font-bold py-3 px-4 rounded-md hover:bg-blue-600 transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-                            id="loginButton"
->>>>>>> 2dc4f10692dc9f5a4c1e8989a73ddaa2c58c2a16
                         >
                             Login
                         </button>
@@ -137,11 +99,7 @@
                         <div id="errorMessage" class="text-red-500 text-center hidden"></div>
                     </form>
                     
-<<<<<<< HEAD
                     <p class="mt-6 text-center text-white">
-=======
-                    <p class="mt-6 text-center text-gray-600">
->>>>>>> 2dc4f10692dc9f5a4c1e8989a73ddaa2c58c2a16
                         Don't have an account? 
                         <a href="{{ route('register') }}" class="text-blue-500 hover:text-blue-600 font-medium">
                             Register here
@@ -151,35 +109,24 @@
             </div>
         </div>
     </main>
-<<<<<<< HEAD
 
     <footer>
 
     </footer>
 
     <script>
-    function togglePasswordVisibility() {
-        const passwordInput = document.getElementById('password');
-        const togglePasswordButton = document.getElementById('togglePassword');
-        const eyeIcon = document.getElementById('eyeIcon');
-        const eyePath = document.getElementById('eyePath');
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const togglePasswordButton = document.getElementById('togglePassword');
+            const eyeIcon = document.getElementById('eyeIcon');
+    
+            const isPassword = passwordInput.type === 'password';
+            passwordInput.type = isPassword ? 'text' : 'password';
 
-        // Toggle the type attribute
-        const isPassword = passwordInput.type === 'password';
-        passwordInput.type = isPassword ? 'text' : 'password';
-
-        // Change the icon based on the visibility state
-        if (isPassword) {
-            // Show password
-            eyePath.setAttribute('d', 'M12 3c-6.627 0-12 6-12 9s5.373 9 12 9 12-6 12-9-5.373-9-12-9zm0 14c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z'); // Eye icon
-        } else {
-            // Hide password
-            eyePath.setAttribute('d', 'M12 3c-6.627 0-12 6-12 9s5.373 9 12 9 12-6 12-9-5.373-9-12-9zm0 14c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z M12 3c-6.627 0-12 6-12 9s5.373 9 12 9 12-6 12-9-5.373-9-12-9z'); // Crossed eye icon
+            eyeIcon.setAttribute('d', isPassword 
+                ? 'M12 12c3.313 0 6 2.686 6 6s-2.687 6-6 6-6-2.686-6-6 2.687-6 6-6z' 
+                : 'M3 12c0 0 9 9 18 0 0 0-9-9-18 0z');
         }
-    }
     </script>
-
-=======
->>>>>>> 2dc4f10692dc9f5a4c1e8989a73ddaa2c58c2a16
 </body>
 </html>
