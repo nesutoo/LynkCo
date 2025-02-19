@@ -13,6 +13,7 @@
     <style>
         .relative {
             position: relative;
+
         }
         #togglePassword {
             background: none;
@@ -20,23 +21,24 @@
             cursor: pointer;
             color: white;
         }
+
+        .icon{
+            position: relative;
+            top: 14px;
+            width: 25px
+        }
     </style>
 
 </head>
-<body class="bg-gray-100">
+<body style="background-image: linear-gradient(to right, #000931,rgb(214, 221, 255)">
     <main>
         <div class="min-h-screen flex items-center justify-center p-4">
             <div class="flex flex-col md:flex-row gap-5 justify-center items-center bg-white p-8 md:p-10 rounded-lg shadow-lg w-full max-w-4xl" style="background-color: #242b4a">
                 <div class="w-full md:w-1/2 flex items-center justify-center">
                     <div class="heading text-center">
                         <img src="https://via.placeholder.com/150" alt="LynkCo Logo" class="mb-4 rounded-lg mx-auto">
-<<<<<<< HEAD
-                        <h2 class="head-text text-2xl font-bold">Welcome to LynkCo!</h2>
-                        <p class="text-gray-600 mt-2">Please login to access your account.</p>
-=======
-                        <h2 class="text-2xl font-bold" >Welcome to LynkCo!</h2>
+                        <h2 class="text-2xl font-bold text-white" >Welcome to LynkCo!</h2>
                         <p class="">Please login to access your account.</p>
->>>>>>> eb17657932abcef82504a9b3809426412ffd68e4
                     </div>
                 </div>
 
@@ -50,7 +52,7 @@
                                 name="email" 
                                 id="email" 
                                 required 
-                                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                                class="w-full px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
                                 placeholder="Enter your email"
                                 style="background-color: #374066"
                             >
@@ -77,7 +79,7 @@
                                 <svg 
                                     id="eyeIcon" 
                                     xmlns="http://www.w3.org/2000/svg" 
-                                    class="h-5 w-5 text-gray-500" 
+                                    class="icon h-5 w-5 text-white" 
                                     fill="none" 
                                     viewBox="0 0 24 24" 
                                     stroke="currentColor"
