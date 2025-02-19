@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Login - LynkCo</title>
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     @vite(['resources/js/firebase.js', 'resources/js/login.js'])
 </head>
@@ -15,7 +17,7 @@
                 <div class="w-full md:w-1/2 flex items-center justify-center">
                     <div class="text-center">
                         <img src="https://via.placeholder.com/150" alt="LynkCo Logo" class="mb-4 rounded-lg mx-auto">
-                        <h2 class="text-2xl font-bold text-gray-800">Welcome to LynkCo!</h2>
+                        <h2 class="head-text text-2xl font-bold">Welcome to LynkCo!</h2>
                         <p class="text-gray-600 mt-2">Please login to access your account.</p>
                     </div>
                 </div>
