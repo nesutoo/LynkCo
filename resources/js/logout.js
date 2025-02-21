@@ -1,3 +1,4 @@
+// logout.js
 import { logout } from './firebase.js';
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -6,15 +7,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const loadingOverlay = document.getElementById('loadingOverlay');
 
     function showLoading() {
-        loadingOverlay.classList.remove('hidden');
-        logoutButton.disabled = true;
-        logoutButton.textContent = 'Logging out...';
+        if (loadingOverlay) loadingOverlay.classList.remove('hidden');
+        if (logoutButton) {
+            logoutButton.disabled = true;
+            logoutButton.textContent = 'Logging out...';
+        }
     }
 
     function hideLoading() {
-        loadingOverlay.classList.add('hidden');
-        logoutButton.disabled = false;
-        logoutButton.textContent = 'Logout';
+        if (loadingOverlay) loadingOverlay.classList.add('hidden');
+        if (logoutButton) {
+            logoutButton.disabled = false;
+            logoutButton.textContent = 'Logout';
+        }
     }
 
     async function handleLogout(e) {
@@ -30,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content')
                 }
             });
 
@@ -38,7 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 throw new Error('Failed to logout from server');
             }
 
-            // Successful logout
             window.location.href = '/login';
         } catch (error) {
             console.error('Logout error:', error);
@@ -47,11 +51,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    logoutForm.addEventListener('submit', handleLogout);
+    logoutForm?.addEventListener('submit', handleLogout);
 
-    // Handle beforeunload to prevent accidental navigation during logout
+    let isLoggingOut = false;
     window.addEventListener('beforeunload', (e) => {
-        if (logoutButton.disabled) {
+        if (isLoggingOut) {
             e.preventDefault();
             e.returnValue = '';
         }

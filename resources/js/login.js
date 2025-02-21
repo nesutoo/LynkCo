@@ -1,3 +1,4 @@
+// login.js
 import { signIn } from './firebase.js';
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -14,26 +15,40 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function hideErrors() {
         [errorMessage, emailError, passwordError].forEach(element => {
-            element.textContent = '';
-            element.classList.add('hidden');
+            if (element) {
+                element.textContent = '';
+                element.classList.add('hidden');
+            }
         });
     }
 
     function setLoading(isLoading) {
-        loginButton.disabled = isLoading;
-        loginButton.textContent = isLoading ? 'Logging in...' : 'Login';
-        loginButton.classList.toggle('opacity-75', isLoading);
+        if (loginButton) {
+            loginButton.disabled = isLoading;
+            loginButton.textContent = isLoading ? 'Logging in...' : 'Login';
+            loginButton.classList.toggle('opacity-75', isLoading);
+        }
     }
 
-    loginForm.addEventListener('submit', async function(e) {
+    function validateEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    loginForm?.addEventListener('submit', async function(e) {
         e.preventDefault();
         hideErrors();
 
-        const email = document.getElementById('email').value.trim();
-        const password = document.getElementById('password').value;
+        const email = document.getElementById('email')?.value.trim();
+        const password = document.getElementById('password')?.value;
 
         if (!email) {
             showError('Email is required', emailError);
+            return;
+        }
+
+        if (!validateEmail(email)) {
+            showError('Please enter a valid email address', emailError);
             return;
         }
 
@@ -47,13 +62,15 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             // Firebase Authentication
             const userCredential = await signIn(email, password);
+            const idToken = await userCredential.user.getIdToken();
             
             // Laravel Authentication
             const response = await fetch('/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content'),
+                    'Authorization': `Bearer ${idToken}`
                 },
                 body: JSON.stringify({ email, password })
             });
@@ -64,12 +81,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 throw new Error(data.message || 'Login failed');
             }
 
-            // Redirect to dashboard
             window.location.href = data.redirect || '/dashboard';
 
         } catch (error) {
             console.error('Login error:', error);
-            showError(error.message || 'An error occurred during login. Please try again.');
+            showError(error.message || 'Invalid email or password. Please try again.');
         } finally {
             setLoading(false);
         }

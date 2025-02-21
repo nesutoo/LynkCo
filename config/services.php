@@ -36,7 +36,9 @@ return [
     ],
 
     'firebase' => [
-    'credentials' => storage_path('app/firebase/serviceAccountKey.json'),
+        'credentials' => storage_path('app/firebase/firebase-credentials.json'),
+        'database_url' => env('FIREBASE_DATABASE_URL'),
+        'project_id' => env('FIREBASE_PROJECT_ID'),
     ],
     
 

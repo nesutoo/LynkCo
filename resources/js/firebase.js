@@ -1,8 +1,12 @@
 // firebase.js
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { getFirestore } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
+import { getDatabase } from 'firebase/database';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged as onAuthStateChangedFirebase } from "firebase/auth";
 
 const firebaseConfig = {
+    databaseURL: "http://lynkco-id.firebaseapp.com/",
     apiKey: "AIzaSyCIpr524siBF_b0jIRXO6oUAe02iKZrzkA",
     authDomain: "lynkco-id.firebaseapp.com",
     projectId: "lynkco-id",
@@ -14,6 +18,9 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
+
+export const database = getDatabase(app);
 
 // Sign Up function
 export const signUp = (email, password) => {
@@ -43,6 +50,22 @@ export const getCurrentUser = () => {
 
 // Auth state observer
 export const onAuthStateChanged = (callback) => {
-    return auth.onAuthStateChanged(callback);
+    return onAuthStateChangedFirebase(auth, callback);
 };
 
+// Example of Firestore data fetch
+export const getData = async (collectionName) => {
+    try {
+        const querySnapshot = await getDocs(collection(db, collectionName));
+        const data = [];
+        querySnapshot.forEach((doc) => {
+            data.push({ id: doc.id, ...doc.data() });
+        });
+        return data;
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        throw error;
+    }
+};
+
+export { db, auth };

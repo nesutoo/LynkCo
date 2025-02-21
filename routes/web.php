@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FirestoreController;
+
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', function () {
@@ -24,4 +26,11 @@ Route::middleware('auth')->group(function () {
 // Fallback route for unauthorized access
 Route::fallback(function () {
     return redirect()->route('login');
+});
+
+// routes/web.php
+Route::middleware(['auth'])->group(function () {
+    Route::post('/presence/update', [FirestoreController::class, 'updatePresence']);
+    Route::get('/presence/online', [FirestoreController::class, 'getOnlineUsers']);
+    Route::post('/presence/clear', [FirestoreController::class, 'clearPresence']);
 });
